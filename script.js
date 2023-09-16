@@ -1,9 +1,16 @@
 
-
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min; //Максимум не включается, минимум включается
+}
+function getItemGrid(number) {
+
+    let proverka = number.innerText;
+    if (i == 4) {
+        alert('Поздравляю, все угадал');
+
+    }
 }
 
 num1 = getRandomInt(1, 17);
@@ -23,42 +30,21 @@ console.log(num1, num2, num3, num4);
 
 alert('угадай 4 числа')
 let i = 0;
-
-
-
-
-function getItemGrid(number) {
-
-    let proverka = number.innerText;
-
-
-    if (proverka == num1 || proverka == num2 || proverka == num3 || proverka == num4) {
-        alert('угадал');
-        i++;
-        let buttons = document.querySelectorAll('button');
-        buttons.forEach(buttons => {
-
-            buttons.addEventListener("click", function (event) {
-
-                event.target.style.backgroundColor = 'green';
-            })
+let buttons = document.querySelectorAll('button');
+buttons.forEach(buttons => {
+    buttons.addEventListener("click", function (event) {
+        proverka = event.target.innerText
+        if (proverka == num1 || proverka == num2 || proverka == num3 || proverka == num4) {
+            alert('угадал');
+            i++;
+            event.target.style.backgroundColor = 'green';
+            getItemGrid(number);
+        } else {
+            alert("не угадал");
+            event.target.style.backgroundColor = 'red';
         }
-        )
-    } else {
-        alert("не угадал")
-        let buttons = document.querySelectorAll('button');
-        buttons.forEach(buttons => {
-
-            buttons.addEventListener("click", function (event) {
-
-                event.target.style.backgroundColor = 'red';
-            })
-        })
-    }
+    })
+});
 
 
-    if (i == 4) {
-        alert('Поздравляю, все угадал');
 
-    }
-}
